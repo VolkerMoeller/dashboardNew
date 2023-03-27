@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="graph.js"></script>
     <script src="graphUser.js"></script>
@@ -16,27 +16,49 @@
 </head>
 
 <body onload="init()">
-    test
-    <div><h1>Dashboard Bitcoin</h1></div>
-    <h2>Bitcoin-Preise:</h2>
-    <h3>Tagesaktueller Kurs:</h3><span id="bitCoinToday"></span>
-    <h3>Liste der letzten sechs Tage:</h3>
-    <ul id="priceTable"></ul>
-    <h3>Chart der letzten sieben Tage:</h3>
-    <div id="chartPlace">
-        <canvas id="myChart"></canvas>
+    <div class="header">
+        <div class="paddingLeft">Dashboard Bitcoin</div>
     </div>
-    <form onsubmit="initUser(); return false;" >
-        <h3>Zeitraumauswahl:</h3>
-        <input required type="date" id="userStartDate">
-        bis
-        <input required type="date" id="userEndDate">
-        <button>Aktualisieren</button>
-    </form>
-    <div id="dateValidationResponse"></div>
-    <div id="myChartPlace">
-        <canvas id="myChartUser"></canvas>
+
+    <div class="dashboard">
+        <div class="backgroundWhite">
+            <div class="tableBitcoin">
+                <h3>Tagesaktueller Kurs:</h3><span class="paddingLeft" id="bitCoinToday"></span>
+                <h3>Liste der letzten sechs Tage:</h3>
+                <ul id="priceTable"></ul>
+            </div>
+        </div>
+
+        <div class="dashboardRight">
+            <div id="graphBitcoin" class="graphBitcoin backgroundWhite">
+                <div class="nav">
+                </div>
+                <h3>Chart der letzten sieben Tage:</h3>
+                <div class="chartPlace" id="chartPlace">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <button onclick="showOrHideAnyDivById('graphUser')">Zeitraumauswahl</button>
+            </div>
+            <div id="graphUser" class="graphUser backgroundWhite displayNone">
+                <div class="nav">
+                    <!-- <button onclick="">Zeitraumauswahl</button> -->
+                </div>
+                <form onsubmit="initUser(); return false;">
+                    <h3>Zeitraumauswahl:</h3>
+                    <input required type="date" id="userStartDate">
+                    bis
+                    <input required type="date" id="userEndDate">
+                    <button>Aktualisieren</button>
+                </form>
+                <div id="dateValidationResponse"></div>
+                <div id="myChartPlace">
+                    <canvas id="myChartUser"></canvas>
+                </div>
+                <button onclick="showOrHideAnyDivById('graphUser')">7-Tage-Chart</button>
+            </div>
+        </div>
     </div>
+
 
 </body>
 

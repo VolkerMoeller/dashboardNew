@@ -226,3 +226,12 @@ function formatDate(anyDate) {
     let newDate = dateFormat.format(isoDate);
     return newDate;
 }
+
+function showOrHideAnyDivById(anyId) {
+    let displayNone = document.getElementById(anyId).classList.contains('displayNone');
+    if (displayNone == true) {
+        document.getElementById(anyId).classList.remove('displayNone');
+    } else {
+        document.getElementById(anyId).classList.add('displayNone');
+    }
+}
