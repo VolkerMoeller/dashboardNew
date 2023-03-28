@@ -2,7 +2,6 @@ body {
     margin: 0px;
     font-family: 'Noto Sans';
     background-color: rgba(0, 0, 0, 0.8);
-    /* height: 100vh; */
 }
 
 .header {
@@ -16,16 +15,26 @@ body {
     align-items: center;
 }
 
+h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 0px;
+}
+
 .backgroundWhite {
     background-color: white;
+}
+
+.styleCard {
     border-radius: 10px;
-    margin-top: 16px;
-    margin-left: 16px;
-    margin-right: 16px;
+    margin: 16px;
+    background-color: rgb(119, 119, 119, 1.0);
 }
 
 .dashboard {
-    /* width: 100vw; */
     display: flex;
     justify-content: start;
 }
@@ -33,35 +42,38 @@ body {
 .tableBitcoin {
     height: 100%;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.4);
     color: white;
-}
-
-.tableBitcoin h3 {
-    margin-top: 0px;
-    padding-top: 16px;
-    padding-right: 16px;
-    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
 }
 
 .dashboardRight {
-    position: relative;
+    min-height: 80vh;
+    min-width: 60vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 
-.graphBitcoin {
-    width: 60vw;
+.graph {
+    padding: 16px;
+    margin: 16px;
 }
 
-.graphBitcoin h3 {
-    margin-top: 0px;
-    padding-top: 16px;
+.graphUser {
+    height: 100%;
+}
+
+.paddingLeftRight {
+    padding-left: 16px;
     padding-right: 16px;
-    padding-left: 16px;
 }
 
-.paddingLeft {
-    padding-left: 16px;
+.paddingTopBottom {
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
+
 
 .chartPlace {
     padding-left: 16px;
@@ -69,33 +81,36 @@ body {
     padding-bottom: 16px;
 }
 
-.graphUser {
-    width: 60vw;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-}
 
 .graphUser form {
     padding-left: 16px;
+    padding-bottom: 16px;
 }
 
 .displayNone {
-    display: none;
+    display: none !important;
 }
 
-.nav {
+.paddingNav {
     padding-left: 16px;
     padding-top: 16px;
 }
 
-@media (max-width: 760px){
+.dateValidationResponse {
+    padding: 16px;
+}
+
+.withoutPaddingLeft {
+    padding-left: 0px !important;
+}
+
+@media (max-width: 950px) {
     .dashboard {
         flex-wrap: wrap;
+        flex-direction: column-reverse;
         justify-content: center;
     }
+
     .tableBitcoin {
         text-align: center;
         display: flex;
@@ -103,4 +118,43 @@ body {
         align-items: center;
         justify-content: center;
     }
+
+    .styleCard {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .graph {
+        margin-top: 8px;
+        margin-bottom: 16px;
+        margin-left: 16px;
+        margin-right: 16px;
+        padding-bottom: 8px;
+    }
+
+    /* .dashboardRight {
+        padding-right: 4px;
+        padding-left: 4px;
+        padding-top: 4px;
+        margin-top: 4px;
+        justify-content: start;
+        min-height: 100vh;
+    } */
+
+    .graphUser {
+        /* display: flex;
+        flex-direction: column; */
+        height: 100%;
+    }
+
+    h3 {
+        margin-top: 0px;
+        padding-top: 16px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+    }
+
 }

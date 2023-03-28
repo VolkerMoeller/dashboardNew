@@ -19,6 +19,7 @@ async function init() {
 
 async function initUser() {
     validInput = true;
+    showAnyDivById('myChartPlace')
     clearCanvasUser();
     clearDateValidationResponse();
     proofUserDates();
@@ -178,7 +179,9 @@ function convertDatetoJavaIso(date) {
 function validationFutureDate(date) {
     let today = new Date();
     if (convertDatetoJavaIso(date) > today) {
-        document.getElementById('dateValidationResponse').innerHTML += `<b>Eingabe prüfen: ${date}: dieses Datum liegt in der Zukunft!</b><br>`;
+        hideAnyDivById('myChartPlace');
+        let dateFormatted = formatDate(date);
+        document.getElementById('dateValidationResponse').innerHTML += `<b>Bitte Eingabe prüfen:</b><br> ${dateFormatted}: Dieses Datum liegt in der Zukunft!<br>`;
         validInput = false;
     };
 }
@@ -186,7 +189,8 @@ function validationFutureDate(date) {
 
 function validationOrderDate() {
     if (convertDatetoJavaIso(getUserStartDate()) > convertDatetoJavaIso(getUserEndDate())) {
-        document.getElementById('dateValidationResponse').innerHTML += '<b>Eingabe prüfen: Das Startdatum liegt nach dem Enddatum.</b>';
+        hideAnyDivById('myChartPlace');
+        document.getElementById('dateValidationResponse').innerHTML += '<b>Bitte Eingabe prüfen:</b><br> Das Startdatum liegt nach dem Enddatum.';
         validInput = false;
     }
 }
@@ -234,4 +238,26 @@ function showOrHideAnyDivById(anyId) {
     } else {
         document.getElementById(anyId).classList.add('displayNone');
     }
+}
+
+
+function hideDivFstShowDivSnd(fstId, sndId) {
+    document.getElementById(fstId).classList.add('displayNone');
+    document.getElementById(sndId).classList.remove('displayNone');
+}
+
+
+function hideDivSndShowDivFst(fstId, sndId) {
+    document.getElementById(fstId).classList.remove('displayNone');
+    document.getElementById(sndId).classList.add('displayNone');
+}
+
+
+function hideAnyDivById(anyId) {
+    document.getElementById(anyId).classList.add('displayNone');
+}
+
+
+function showAnyDivById(anyId) {
+    document.getElementById(anyId).classList.remove('displayNone');
 }

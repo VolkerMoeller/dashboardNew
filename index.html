@@ -16,47 +16,44 @@
 </head>
 
 <body onload="init()">
-    <div class="header">
-        <div class="paddingLeft">Dashboard Bitcoin</div>
-    </div>
-
-    <div class="dashboard">
-        <div class="backgroundWhite">
-            <div class="tableBitcoin">
-                <h3>Tagesaktueller Kurs:</h3><span class="paddingLeft" id="bitCoinToday"></span>
-                <h3>Liste der letzten sechs Tage:</h3>
-                <ul id="priceTable"></ul>
-            </div>
+    <div class="header paddingLeftRight">
+        <div class="titleHeader ">
+            <div class="title1st">Dashboard</div>
+            <div class="title2nd">Bitcoin</div>
         </div>
-
-        <div class="dashboardRight">
-            <div id="graphBitcoin" class="graphBitcoin backgroundWhite">
-                <div class="nav">
-                </div>
+    </div>
+    
+    <div class="dashboard">
+        <div class="dashboardRight backgroundWhite styleCard">
+            <div class="paddingNav">
+                <button onclick="hideDivFstShowDivSnd('graphBitcoin','graphUser')">Zeitraumauswahl</button>
+                <button onclick="hideDivSndShowDivFst('graphBitcoin','graphUser')">7-Tage-Chart</button>
+            </div>
+            <div class="graph graphBitcoin backgroundWhite" id="graphBitcoin">
                 <h3>Chart der letzten sieben Tage:</h3>
                 <div class="chartPlace" id="chartPlace">
                     <canvas id="myChart"></canvas>
                 </div>
-                <button onclick="showOrHideAnyDivById('graphUser')">Zeitraumauswahl</button>
             </div>
-            <div id="graphUser" class="graphUser backgroundWhite displayNone">
-                <div class="nav">
-                    <!-- <button onclick="">Zeitraumauswahl</button> -->
-                </div>
+            <div class="graph graphUser backgroundWhite displayNone" id="graphUser">
                 <form onsubmit="initUser(); return false;">
-                    <h3>Zeitraumauswahl:</h3>
+                    <h3 class="withoutPaddingLeft">Zeitraumauswahl:</h3>
                     <input required type="date" id="userStartDate">
                     bis
                     <input required type="date" id="userEndDate">
                     <button>Aktualisieren</button>
                 </form>
-                <div id="dateValidationResponse"></div>
                 <div id="myChartPlace">
-                    <canvas id="myChartUser"></canvas>
+                    <canvas class="myChartUser" id="myChartUser"></canvas>
                 </div>
-                <button onclick="showOrHideAnyDivById('graphUser')">7-Tage-Chart</button>
+                <div class="dateValidationResponse" id="dateValidationResponse"></div>
             </div>
         </div>
+        <div class="styleCard tableBitcoin backgroundLightGrey">
+                <h3>Tagesaktueller Kurs:</h3><span class="paddingLeftRight paddingTopBottom" id="bitCoinToday"></span>
+                <h3>Liste der letzten sechs Tage:</h3>
+                <ul id="priceTable"></ul>
+            </div>
     </div>
 
 
