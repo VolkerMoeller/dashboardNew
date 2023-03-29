@@ -22,16 +22,20 @@ async function init() {
 async function initUser() {
     validInput = true;
     showAnyDivById('card6');
+    showAnyDivById('chartBoxUser');
     clearCanvas();
     clearCanvasUser();
     clearDateValidationResponse();
     proofUserDates();
     if (validInput == false) {
+
+        showAnyDivById('card4');
+        hideAnyDivById('chartBoxUser');
         return;
     } else {
-        // hideAnyDivById('card6');
         showCurrentCardbyId('card5');
         await loadBitcoinUser();
+        hideAnyDivById('card6');
         reverseDataUser();
         showGraphUser();
         init();
