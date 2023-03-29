@@ -25,9 +25,8 @@
         <div class="navigation">
             <button onclick="showCurrentCardbyId('card1')">Kurse</button>
             <button onclick="showCurrentCardbyId('card2')">Chart 7</button>
-            <button onclick="showCurrentCardbyId('card3')">card3</button>
-            <button onclick="showCurrentCardbyId('card4')">card4</button>
-            <button onclick="showCurrentCardbyId('card5')">card5</button>
+            <button onclick="showCurrentCardbyId('card3')">Zeitraum</button>
+            <button onclick="showCurrentCardbyId('card5')">Your Chart</button>
         </div>
     </div>
 
@@ -48,21 +47,21 @@
         <div class="card displayNone" id="card3">
             <form onsubmit="initUser(); return false;">
                 <h3 class="withoutPaddingLeft">Zeitraumauswahl:</h3>
+                <div class="period">
                 <input required type="date" id="userStartDate">
                 bis
                 <input required type="date" id="userEndDate">
                 <button>Anzeigen</button>
+            </div>
             </form>
+            <div class="card" id="card4">
+            </div>
         </div>
-
-        <div class="card dateValidationResponse displayNone" id="card4">
-        </div>
-
 
         <div class="card displayNone" id="card5">
             <h3>Chart nach Zeitraumauswahl:</h3>
             <div class="chartBox" id="chartBoxUser">
-                <canvas class="myChartUser" id="myChartUser"></canvas>
+                <canvas id="myChartUser"></canvas>
             </div>
         </div>
     </div>

@@ -9,7 +9,7 @@ let graphLabelsUser = [];
 
 let validInput = true;
 
-let cardIds = ['card1', 'card2', 'card3', 'card4', 'card5'];
+let cardIds = ['card1', 'card2', 'card3', 'card5'];
 
 async function init() {
     clearCanvas();
@@ -21,7 +21,8 @@ async function init() {
 
 async function initUser() {
     validInput = true;
-    showAnyDivById('myChartPlace')
+    // showCurrentCardbyId('card5');
+    // showAnyDivById('myChartPlace')
     clearCanvas();
     clearCanvasUser();
     clearDateValidationResponse();
@@ -182,9 +183,9 @@ function convertDatetoJavaIso(date) {
 function validationFutureDate(date) {
     let today = new Date();
     if (convertDatetoJavaIso(date) > today) {
-        hideAnyDivById('myChartPlace');
+        // hideAnyDivById('myChartPlace');
         let dateFormatted = formatDate(date);
-        document.getElementById('dateValidationResponse').innerHTML += `<b>Bitte Eingabe prüfen:</b><br> ${dateFormatted}: Dieses Datum liegt in der Zukunft!<br>`;
+        document.getElementById('card4').innerHTML += `<span class="dateValidationResponse"><b>Bitte Eingabe prüfen:</b><br> ${dateFormatted}: Dieses Datum liegt in der Zukunft!<br><span>`;
         validInput = false;
     };
 }
@@ -192,21 +193,21 @@ function validationFutureDate(date) {
 
 function validationOrderDate() {
     if (convertDatetoJavaIso(getUserStartDate()) > convertDatetoJavaIso(getUserEndDate())) {
-        hideAnyDivById('myChartPlace');
-        document.getElementById('dateValidationResponse').innerHTML += '<b>Bitte Eingabe prüfen:</b><br> Das Startdatum liegt nach dem Enddatum.';
+        // hideAnyDivById('myChartPlace');
+        document.getElementById('card4').innerHTML += '<span class="dateValidationResponse"><b>Bitte Eingabe prüfen:</b><br> Das Startdatum liegt nach dem Enddatum.<span>';
         validInput = false;
     }
 }
 
 
 function clearDateValidationResponse() {
-    document.getElementById('dateValidationResponse').innerHTML = '';
+    document.getElementById('card4').innerHTML = '';
 }
 
 
 function clearCanvasUser() {
-    document.getElementById('myChartPlace').innerHTML = '';
-    document.getElementById('myChartPlace').innerHTML = '<canvas id="myChartUser"></canvas>';
+    document.getElementById('chartBoxUser').innerHTML = '';
+    document.getElementById('chartBoxUser').innerHTML = '<canvas id="myChartUser"></canvas>';
     graphLabelsUser = [];
     graphValuesUser = [];
 }
