@@ -14,6 +14,7 @@ function showGraph() {
     };
 
     const options = {
+        maintainAspectRatio: false,
         scales: {
             y: {
                 beginAtZero: true

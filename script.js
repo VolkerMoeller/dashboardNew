@@ -9,6 +9,8 @@ let graphLabelsUser = [];
 
 let validInput = true;
 
+let cardIds = ['card1', 'card2', 'card3', 'card4', 'card5'];
+
 async function init() {
     clearCanvas();
     await loadBitcoin();
@@ -20,6 +22,7 @@ async function init() {
 async function initUser() {
     validInput = true;
     showAnyDivById('myChartPlace')
+    clearCanvas();
     clearCanvasUser();
     clearDateValidationResponse();
     proofUserDates();
@@ -210,8 +213,8 @@ function clearCanvasUser() {
 
 
 function clearCanvas() {
-    document.getElementById('chartPlace').innerHTML = '';
-    document.getElementById('chartPlace').innerHTML = '<canvas id="myChart"></canvas>';
+    document.getElementById('chartBox').innerHTML = '';
+    document.getElementById('chartBox').innerHTML = '<canvas id="myChart"></canvas>';
     graphLabels = [];
     graphValues = [];
 }
@@ -260,4 +263,14 @@ function hideAnyDivById(anyId) {
 
 function showAnyDivById(anyId) {
     document.getElementById(anyId).classList.remove('displayNone');
+}
+
+
+function showCurrentCardbyId(currentCardId) {
+    init();
+    for (let i = 0; i < cardIds.length; i++) {
+        let cardId = cardIds[i];
+        document.getElementById(cardId).classList.add('displayNone');
+    }
+    document.getElementById(currentCardId).classList.remove('displayNone');
 }

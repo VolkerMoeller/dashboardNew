@@ -1,18 +1,62 @@
 body {
     margin: 0px;
     font-family: 'Noto Sans';
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgb(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .header {
-    background-color: rgb(66, 0, 151);
-    min-height: 76px;
-    color: white;
-    font-size: 36px;
-    font-weight: bold;
+    height: 86px;
+    width: 100%;
+    background-color: rgba(66, 0, 151, 0.7);
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
+}
+
+.content {
+    width: calc(100% - 32px);
+    height: calc(100% - 86px - 16px);
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.titleHeader {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    padding-left: 16px;
+}
+
+.navigation {
+    padding-right: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.navigation button {
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(66, 0, 151, 0.7);
+    cursor: pointer;
+    width: 120px;
+    height: 86px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.25px;
+}
+
+.navigation button:hover {
+    background-color: rgba(66, 0, 151, 0.95);
+
 }
 
 h3 {
@@ -31,10 +75,11 @@ h3 {
 .styleCard {
     border-radius: 10px;
     margin: 16px;
-    background-color: rgb(119, 119, 119, 1.0);
+    background-color: rgb(0, 0, 0, 0.2);
 }
 
 .dashboard {
+    background-color: aqua;
     display: flex;
     justify-content: start;
 }
@@ -48,8 +93,6 @@ h3 {
 }
 
 .dashboardRight {
-    min-height: 80vh;
-    min-width: 60vw;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -60,9 +103,9 @@ h3 {
     margin: 16px;
 }
 
-.graphUser {
-    height: 100%;
-}
+/* .graphUser { */
+/* height: 100%; */
+/* } */
 
 .paddingLeftRight {
     padding-left: 16px;
@@ -75,10 +118,8 @@ h3 {
 }
 
 
-.chartPlace {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 16px;
+.myChartPlace {
+    padding: 8px;
 }
 
 
@@ -134,20 +175,9 @@ h3 {
         padding-bottom: 8px;
     }
 
-    /* .dashboardRight {
-        padding-right: 4px;
-        padding-left: 4px;
-        padding-top: 4px;
-        margin-top: 4px;
-        justify-content: start;
-        min-height: 100vh;
-    } */
-
-    .graphUser {
-        /* display: flex;
-        flex-direction: column; */
+    /* .graphUser {
         height: 100%;
-    }
+    } */
 
     h3 {
         margin-top: 0px;
@@ -157,4 +187,74 @@ h3 {
         padding-bottom: 0px;
     }
 
+    .priceTable {
+        padding-inline-start: 16px;
+    }
+
+    /* .chartPlace {
+        max-width: 250px;
+        min-height: 300px;
+    } */
+
 }
+
+/* an new begining */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    border-radius: 10px;
+    margin: 16px;
+    padding: 16px;
+    color: white;
+    background-color: rgb(119, 119, 119, 1.0);
+    width: 750px;
+    height: 390px;
+}
+
+.chartBox {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 16px;
+    padding: 16px;
+    width: 675px;
+    height: 300px;
+}
+
+@media screen and (max-width: 860px) {
+    .navigation {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .card {
+        width: 90%;
+        min-height: 45%;
+    }
+    
+    .chartBox {
+        width: 90%;
+        /* height: 45%; */
+    }
+}
+
+@media screen and (max-width: 345px) {
+.card {
+    height: 460px;
+}
+
+
+}
+
+/* @media screen and (max-width: 670px) { */
+/* .chartBox { */
+/* width: 300px; */
+/* height: 150px; */
+/* } */
+/* } */

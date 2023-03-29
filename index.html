@@ -13,49 +13,59 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body onload="init()">
-    <div class="header paddingLeftRight">
-        <div class="titleHeader ">
+    <div class="header">
+        <div class="titleHeader">
             <div class="title1st">Dashboard</div>
             <div class="title2nd">Bitcoin</div>
         </div>
-    </div>
-    
-    <div class="dashboard">
-        <div class="dashboardRight backgroundWhite styleCard">
-            <div class="paddingNav">
-                <button onclick="hideDivFstShowDivSnd('graphBitcoin','graphUser')">Zeitraumauswahl</button>
-                <button onclick="hideDivSndShowDivFst('graphBitcoin','graphUser')">7-Tage-Chart</button>
-            </div>
-            <div class="graph graphBitcoin backgroundWhite" id="graphBitcoin">
-                <h3>Chart der letzten sieben Tage:</h3>
-                <div class="chartPlace" id="chartPlace">
-                    <canvas id="myChart"></canvas>
-                </div>
-            </div>
-            <div class="graph graphUser backgroundWhite displayNone" id="graphUser">
-                <form onsubmit="initUser(); return false;">
-                    <h3 class="withoutPaddingLeft">Zeitraumauswahl:</h3>
-                    <input required type="date" id="userStartDate">
-                    bis
-                    <input required type="date" id="userEndDate">
-                    <button>Aktualisieren</button>
-                </form>
-                <div id="myChartPlace">
-                    <canvas class="myChartUser" id="myChartUser"></canvas>
-                </div>
-                <div class="dateValidationResponse" id="dateValidationResponse"></div>
-            </div>
+        <div class="navigation">
+            <button onclick="showCurrentCardbyId('card1')">Kurse</button>
+            <button onclick="showCurrentCardbyId('card2')">Chart 7</button>
+            <button onclick="showCurrentCardbyId('card3')">card3</button>
+            <button onclick="showCurrentCardbyId('card4')">card4</button>
+            <button onclick="showCurrentCardbyId('card5')">card5</button>
         </div>
-        <div class="styleCard tableBitcoin backgroundLightGrey">
-                <h3>Tagesaktueller Kurs:</h3><span class="paddingLeftRight paddingTopBottom" id="bitCoinToday"></span>
-                <h3>Liste der letzten sechs Tage:</h3>
-                <ul id="priceTable"></ul>
-            </div>
     </div>
 
+    <div class="content">
+        <div class="card" id="card1">
+            <h3>Tagesaktueller Kurs:</h3><span class="paddingLeftRight paddingTopBottom" id="bitCoinToday"></span>
+            <h3>Liste der letzten sechs Tage:</h3>
+            <ul class="priceTable" id="priceTable"></ul>
+        </div>
+
+        <div class="card displayNone" id="card2">
+            <h3>Chart der letzten sieben Tage:</h3>
+            <div class="chartBox" id="chartBox">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card displayNone" id="card3">
+            <form onsubmit="initUser(); return false;">
+                <h3 class="withoutPaddingLeft">Zeitraumauswahl:</h3>
+                <input required type="date" id="userStartDate">
+                bis
+                <input required type="date" id="userEndDate">
+                <button>Anzeigen</button>
+            </form>
+        </div>
+
+        <div class="card dateValidationResponse displayNone" id="card4">
+        </div>
+
+
+        <div class="card displayNone" id="card5">
+            <h3>Chart nach Zeitraumauswahl:</h3>
+            <div class="chartBox" id="chartBoxUser">
+                <canvas class="myChartUser" id="myChartUser"></canvas>
+            </div>
+        </div>
+    </div>
 
 </body>
 

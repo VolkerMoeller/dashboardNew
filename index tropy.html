@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="graph.js"></script>
+    <script src="graphUser.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="init()">
+    <div class="header paddingLeftRight">
+        <div class="titleHeader ">
+            <div class="title1st">Dashboard</div>
+            <div class="title2nd">Bitcoin</div>
+        </div>
+    </div>
+    
+    <div class="dashboard">
+        <div class="dashboardRight backgroundWhite styleCard">
+            <div class="paddingNav">
+                <button onclick="hideDivFstShowDivSnd('graphBitcoin','graphUser')">Zeitraumauswahl</button>
+                <button onclick="hideDivSndShowDivFst('graphBitcoin','graphUser')">7-Tage-Chart</button>
+            </div>
+            <div class="graph graphBitcoin backgroundWhite" id="graphBitcoin">
+                <h3>Chart der letzten sieben Tage:</h3>
+                <div class="chartPlace" id="chartPlace">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            <div class="graph graphUser backgroundWhite displayNone" id="graphUser">
+                <form onsubmit="initUser(); return false;">
+                    <h3 class="withoutPaddingLeft">Zeitraumauswahl:</h3>
+                    <input required type="date" id="userStartDate">
+                    bis
+                    <input required type="date" id="userEndDate">
+                    <button>Aktualisieren</button>
+                </form>
+                <div class="dateValidationResponse" id="dateValidationResponse"></div>
+            </div>
+            <div class="myChartPlace" id="myChartPlace">
+                <canvas class="myChartUser" id="myChartUser"></canvas>
+            </div>
+        </div>
+        <div class="styleCard tableBitcoin backgroundLightGrey displayNone">
+                <h3>Tagesaktueller Kurs:</h3><span class="paddingLeftRight paddingTopBottom" id="bitCoinToday"></span>
+                <h3>Liste der letzten sechs Tage:</h3>
+                <ul class="priceTable" id="priceTable"></ul>
+            </div>
+    </div>
+
+
+</body>
+
+</html>
