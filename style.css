@@ -19,7 +19,7 @@ body {
 
 .content {
     width: calc(100% - 32px);
-    height: calc(100% - 86px - 16px);
+    height: calc(100% - 86px - 32px);
     padding: 16px;
     display: flex;
     justify-content: center;
@@ -47,7 +47,7 @@ body {
     background-color: rgba(66, 0, 151, 0.7);
     cursor: pointer;
     width: 120px;
-    height: 86px;
+    height: 70px;
     color: white;
     font-size: 18px;
     font-weight: bold;
@@ -140,9 +140,18 @@ h3 {
 .dateValidationResponse {
     padding: 16px;
     margin-top: 8px;
-    background-color: rgba(255,0,0, 0.5);
+    background-color: rgba(255, 0, 0, 0.5);
     color: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
+    width: 370px;
+}
+
+@media screen and (max-width: 480px) {
+    .dateValidationResponse {
+
+        width: auto;
+
+    }
 }
 
 
@@ -216,7 +225,7 @@ h3 {
     color: white;
     background-color: rgb(119, 119, 119, 1.0);
     width: 750px;
-    height: 390px;
+    height: 440px;
 }
 
 .chartBox {
@@ -228,7 +237,7 @@ h3 {
     margin-top: 16px;
     padding: 16px;
     width: 675px;
-    height: 300px;
+    height: calc(400px - 48px);
 }
 
 @media screen and (max-width: 860px) {
@@ -242,27 +251,24 @@ h3 {
         width: 90%;
         min-height: 45%;
     }
-    
+
     .chartBox {
         width: 90%;
         /* height: 45%; */
     }
 }
 
-@media screen and (max-width: 345px) {
-.card {
-    height: 460px;
-}
-
-
-}
-
-/* @media screen and (max-width: 670px) { */
-/* .chartBox { */
-/* width: 300px; */
-/* height: 150px; */
+/* @media screen and (max-width: 345px) { */
 /* } */
-/* } */
+/* }*/
+
+@media screen and (max-width: 360px) {
+    .card {
+        height: auto;
+        /* sehr wichtig: hier wird die feste Standardhöhe ausgeschaltet */
+        min-height: 460px;
+    }
+}
 
 .period {
     display: flex;
@@ -276,23 +282,28 @@ h3 {
 .card input {
     border: none;
     border-radius: 10px;
-    padding: 8px;
-    height: 48px;
+    padding: 6px;
+    height: 36px;
     font-family: 'Noto Sans';
     font-size: 18px;
+    outline: none;
+    text-align: center;
 }
 
 .card button {
     border: none;
     border-radius: 10px;
-    padding: 8px;
+    padding: px;
     height: 48px;
     font-family: 'Noto Sans';
     font-size: 18px;
     cursor: pointer;
     margin-left: 16px;
     margin-right: 16px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 
+.activ {
+    color: rgb(103, 284, 240, 1.0) !important;
 }

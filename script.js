@@ -21,8 +21,7 @@ async function init() {
 
 async function initUser() {
     validInput = true;
-    // showCurrentCardbyId('card5');
-    // showAnyDivById('myChartPlace')
+    showAnyDivById('card6');
     clearCanvas();
     clearCanvasUser();
     clearDateValidationResponse();
@@ -30,6 +29,8 @@ async function initUser() {
     if (validInput == false) {
         return;
     } else {
+        // hideAnyDivById('card6');
+        showCurrentCardbyId('card5');
         await loadBitcoinUser();
         reverseDataUser();
         showGraphUser();
@@ -183,9 +184,9 @@ function convertDatetoJavaIso(date) {
 function validationFutureDate(date) {
     let today = new Date();
     if (convertDatetoJavaIso(date) > today) {
-        // hideAnyDivById('myChartPlace');
         let dateFormatted = formatDate(date);
         document.getElementById('card4').innerHTML += `<span class="dateValidationResponse"><b>Bitte Eingabe prüfen:</b><br> ${dateFormatted}: Dieses Datum liegt in der Zukunft!<br><span>`;
+        document.getElementById('card6').innerHTML += `<span class="dateValidationResponse">${dateFormatted}: Dieses Datum liegt in der Zukunft!<br><b>Zum Ändern auf "Zeitraum" klicken.</b><br><span>`;
         validInput = false;
     };
 }
@@ -193,8 +194,8 @@ function validationFutureDate(date) {
 
 function validationOrderDate() {
     if (convertDatetoJavaIso(getUserStartDate()) > convertDatetoJavaIso(getUserEndDate())) {
-        // hideAnyDivById('myChartPlace');
         document.getElementById('card4').innerHTML += '<span class="dateValidationResponse"><b>Bitte Eingabe prüfen:</b><br> Das Startdatum liegt nach dem Enddatum.<span>';
+        document.getElementById('card6').innerHTML += '<span class="dateValidationResponse">Das Startdatum liegt nach dem Enddatum.<b><br>Zum Ändern auf "Zeitraum" klicken.</b><span>';
         validInput = false;
     }
 }
@@ -202,6 +203,7 @@ function validationOrderDate() {
 
 function clearDateValidationResponse() {
     document.getElementById('card4').innerHTML = '';
+    document.getElementById('card6').innerHTML = '';
 }
 
 
@@ -268,10 +270,22 @@ function showAnyDivById(anyId) {
 
 
 function showCurrentCardbyId(currentCardId) {
+    let btnId = 'btn-' + currentCardId;
     init();
     for (let i = 0; i < cardIds.length; i++) {
         let cardId = cardIds[i];
+        let btnId = 'btn-' + cardId;
+        changeColorToDefaultById(btnId);
         document.getElementById(cardId).classList.add('displayNone');
     }
+    changeColorToActivById(btnId);
     document.getElementById(currentCardId).classList.remove('displayNone');
+}
+
+function changeColorToActivById(anyId) {
+    document.getElementById(anyId).classList.add('activ');
+}
+
+function changeColorToDefaultById(anyId) {
+    document.getElementById(anyId).classList.remove('activ');
 }

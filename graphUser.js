@@ -15,6 +15,7 @@ function showGraphUser() {
     };
 
     const options = {
+        maintainAspectRatio: false,
         scales: {
             y: {
                 beginAtZero: true
