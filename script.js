@@ -13,6 +13,7 @@ let validInput = true;
 
 let cardIds = ['card1', 'card2', 'card3', 'card5'];
 
+
 async function init() {
     clearCanvas();
     // clearCanvasUser();
@@ -286,13 +287,19 @@ function initCurrentCardById(currentCardId) {
 // Clean Code Achtung
 function showCurrentCardbyId(currentCardId) {
     let btnId = 'btn-' + currentCardId;
+    let lastChar = currentCardId.charAt(4);
+    let btnMenuId = 'btn-menuBar' + lastChar;
     for (let i = 0; i < cardIds.length; i++) {
         let cardId = cardIds[i];
         let btnId = 'btn-' + cardId;
+        let lastChar = cardId.charAt(4);
+        let btnMenuId = 'btn-menuBar' + lastChar;
         changeColorToDefaultById(btnId);
+        changeColorToDefaultById(btnMenuId);
         document.getElementById(cardId).classList.add('displayNone');
     }
     changeColorToActivById(btnId);
+    changeColorToActivById(btnMenuId);
     document.getElementById(currentCardId).classList.remove('displayNone');
 }
 
