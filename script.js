@@ -281,12 +281,15 @@ function openCloseBar() {
     let opened =  document.getElementById('menuBar').style['transform']; 
     if (opened == 'translateX(-100%)') {
         document.getElementById('menuBar').style = "transform: translateX(0%)";
+        document.getElementById('openClose-btn').classList.add('activ');      
     } else {
         document.getElementById('menuBar').style = "transform: translateX(-100%)";
+        document.getElementById('openClose-btn').classList.remove('activ');
     }
 }
 
 function initCurrentCardById(currentCardId) {
+    openCloseBar();
     if (currentCardId == 'card1') {
         init();
     }
