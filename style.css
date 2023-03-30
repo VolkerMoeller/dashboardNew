@@ -68,6 +68,15 @@ h3 {
     padding-bottom: 0px;
 }
 
+h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 0px;
+}
+
 .backgroundWhite {
     background-color: white;
 }
@@ -237,7 +246,7 @@ h3 {
     margin-top: 16px;
     padding: 16px;
     width: 675px;
-    height: calc(400px - 48px);
+    height: calc(400px - 68px);
 }
 
 @media screen and (max-width: 860px) {
@@ -258,9 +267,11 @@ h3 {
     }
 }
 
-/* @media screen and (max-width: 345px) { */
-/* } */
-/* }*/
+@media screen and (max-width: 480px) {
+    .card {
+        height: auto;
+    }
+}
 
 @media screen and (max-width: 360px) {
     .card {
@@ -306,4 +317,8 @@ h3 {
 
 .activ {
     color: rgb(103, 284, 240, 1.0) !important;
+}
+
+.default {
+    font-size: 20px;
 }

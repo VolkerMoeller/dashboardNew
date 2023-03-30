@@ -7,12 +7,15 @@ let graphLabels = [];
 let graphValuesUser = [];
 let graphLabelsUser = [];
 
+
+
 let validInput = true;
 
 let cardIds = ['card1', 'card2', 'card3', 'card5'];
 
 async function init() {
     clearCanvas();
+    // clearCanvasUser();
     await loadBitcoin();
     reverseData();
     showGraph();
@@ -22,23 +25,23 @@ async function init() {
 async function initUser() {
     validInput = true;
     showAnyDivById('card6');
+    showAnyDivById('card7');
     showAnyDivById('chartBoxUser');
-    clearCanvas();
     clearCanvasUser();
     clearDateValidationResponse();
     proofUserDates();
     if (validInput == false) {
-
         showAnyDivById('card4');
         hideAnyDivById('chartBoxUser');
+        clearCanvasUser();
         return;
     } else {
-        showCurrentCardbyId('card5');
         await loadBitcoinUser();
+        showCurrentCardbyId('card5');
         hideAnyDivById('card6');
+        hideAnyDivById('card7');
         reverseDataUser();
         showGraphUser();
-        init();
     }
 }
 
@@ -85,7 +88,7 @@ function showBitCoinLastSixDays() {
         let date = prices[i][0];
         let dateFormatted = formatDate(date);
         graphLabels.push(dateFormatted);
-        document.getElementById('priceTable').innerHTML += `<li>${dateFormatted}: <b>${priceFormatted}</b></li>`;
+        document.getElementById('priceTable').innerHTML += `<li class="default">${dateFormatted}: <b>${priceFormatted}</b></li>`;
     }
 };
 
@@ -212,18 +215,18 @@ function clearDateValidationResponse() {
 
 
 function clearCanvasUser() {
-    document.getElementById('chartBoxUser').innerHTML = '';
-    document.getElementById('chartBoxUser').innerHTML = '<canvas id="myChartUser"></canvas>';
     graphLabelsUser = [];
     graphValuesUser = [];
+    document.getElementById('chartBoxUser').innerHTML = '';
+    document.getElementById('chartBoxUser').innerHTML = '<canvas id="myChartUser"></canvas>';
 }
 
 
 function clearCanvas() {
-    document.getElementById('chartBox').innerHTML = '';
-    document.getElementById('chartBox').innerHTML = '<canvas id="myChart"></canvas>';
     graphLabels = [];
     graphValues = [];
+    document.getElementById('chartBox').innerHTML = '';
+    document.getElementById('chartBox').innerHTML = '<canvas id="myChart"></canvas>';
 }
 
 
@@ -272,10 +275,17 @@ function showAnyDivById(anyId) {
     document.getElementById(anyId).classList.remove('displayNone');
 }
 
+function initCurrentCardById(currentCardId) {
+    if (currentCardId == 'card1') {
+        init();
+    }
+    showCurrentCardbyId(currentCardId);
+}
 
+
+// Clean Code Achtung
 function showCurrentCardbyId(currentCardId) {
     let btnId = 'btn-' + currentCardId;
-    init();
     for (let i = 0; i < cardIds.length; i++) {
         let cardId = cardIds[i];
         let btnId = 'btn-' + cardId;
@@ -292,4 +302,8 @@ function changeColorToActivById(anyId) {
 
 function changeColorToDefaultById(anyId) {
     document.getElementById(anyId).classList.remove('activ');
+}
+
+function destroyChartByConst(constChart) {
+    constChart.destroy();
 }

@@ -1,4 +1,5 @@
-// Der Graph wird mit dem Aufruf einer Funktion definiert!
+let sevenDayChart;
+
 function showGraph() {
     const ctx = document.getElementById('myChart');
 
@@ -22,7 +23,11 @@ function showGraph() {
         }
     }
 
-    new Chart(ctx, {
+    if (sevenDayChart) {
+        destroyChartByConst(sevenDayChart);
+    }
+
+    sevenDayChart = new Chart(ctx, {
         type: type,
         data: data,
         options: options

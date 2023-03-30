@@ -23,30 +23,31 @@
             <div class="title2nd activ">Bitcoin</div>
         </div>
         <div class="navigation">
-            <button onclick="showCurrentCardbyId('card1')" id="btn-card1">Kurs</button>
-            <button onclick="showCurrentCardbyId('card2')" id="btn-card2">Chart 7</button>
-            <button onclick="showCurrentCardbyId('card3')" id="btn-card3">Zeitraum</button>
-            <button onclick="showCurrentCardbyId('card5')" id="btn-card5">Your Chart</button>
+            <button onclick="initCurrentCardById('card1')" id="btn-card1">Kurs</button>
+            <button onclick="initCurrentCardById('card2')" id="btn-card2">Chart 7</button>
+            <button onclick="initCurrentCardById('card3')" id="btn-card3">Zeitraum</button>
+            <button onclick="initCurrentCardById('card5')" id="btn-card5">Your Chart</button>
         </div>
     </div>
 
     <div class="content">
         <div class="card" id="card1">
-            <h3>Tagesaktueller Kurs:</h3><span class="paddingLeftRight paddingTopBottom activ" id="bitCoinToday"></span>
-            <h3>Liste der letzten sechs Tage:</h3>
+            <h2>Tagesaktueller Kurs:</h2><span class="paddingLeftRight paddingTopBottom activ default" id="bitCoinToday"></span>
+            <h2>Liste der letzten sechs Tage:</h2>
             <ul class="priceTable" id="priceTable"></ul>
         </div>
         
         <div class="card displayNone" id="card2">
-            <h3>Chart der letzten sieben Tage:</h3>
+            <h2>Chart der letzten sieben Tage:</h2>
             <div class="chartBox" id="chartBox">
                 <canvas id="myChart"></canvas>
+                
             </div>
         </div>
         
         <div class="card displayNone" id="card3">
             <form onsubmit="initUser(); return false;">
-                <h3 class="withoutPaddingLeft">Zeitraumauswahl:</h3>
+                <h2 class="withoutPaddingLeft">Zeitraumauswahl:</h2>
                 <div class="period">
                     <input required type="date" id="userStartDate">
                     bis
@@ -54,12 +55,15 @@
                     <button>Anzeigen</button>
                 </div>
             </form>
+            <div class="card displayNone" id="card7">
+                <span class="dateValidationResponse">Server lässt sich Zeit.<b><br>Bitte warten</b><span></span>
+            </div>
             <div class="card displayNone" id="card4">
             </div>
         </div>
         
         <div class="card displayNone" id="card5">
-            <h3>Chart nach Zeitraumauswahl:</h3>
+            <h2>Chart nach Zeitraumauswahl:</h2>
             <div class="card" id="card6">
                 <span class="dateValidationResponse">Es liegt keine gültige Zeitraumauswahl vor.<b><br>Zum Ändern auf "Zeitraum" klicken.</b><span></span>
             </div>

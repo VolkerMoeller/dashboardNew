@@ -1,4 +1,5 @@
-// Der Graph wird mit dem Aufruf einer Funktion definiert!
+let userChart;
+
 function showGraphUser() {
 
     const ctx = document.getElementById('myChartUser');
@@ -7,7 +8,7 @@ function showGraphUser() {
 
     const data = {
         labels: graphLabelsUser,
-        datasets: [{
+        datasets: [{ // index 0 - eckige Klammer
             label: 'Bitoin Aktienkurs',
             data: graphValuesUser,
             borderWidth: 1
@@ -23,7 +24,9 @@ function showGraphUser() {
         }
     }
 
-    new Chart(ctx, {
+    if (userChart) { destroyChartByConst(userChart); }
+
+    userChart = new Chart(ctx, {
         type: type,
         data: data,
         options: options
