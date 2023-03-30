@@ -32,6 +32,8 @@ body {
     font-size: 32px;
     font-weight: bold;
     padding-left: 16px;
+    padding-right: 16px;
+
 }
 
 .navigation {
@@ -112,10 +114,6 @@ h2 {
     margin: 16px;
 }
 
-/* .graphUser { */
-/* height: 100%; */
-/* } */
-
 .paddingLeftRight {
     padding-left: 16px;
     padding-right: 16px;
@@ -155,71 +153,12 @@ h2 {
     width: 370px;
 }
 
-@media screen and (max-width: 480px) {
-    .dateValidationResponse {
-
-        width: auto;
-
-    }
-}
 
 
 .withoutPaddingLeft {
     padding-left: 0px !important;
 }
 
-@media (max-width: 950px) {
-    .dashboard {
-        flex-wrap: wrap;
-        flex-direction: column-reverse;
-        justify-content: center;
-    }
-
-    .tableBitcoin {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .styleCard {
-        margin-top: 16px;
-        margin-bottom: 16px;
-        margin-left: 8px;
-        margin-right: 8px;
-    }
-
-    .graph {
-        margin-top: 8px;
-        margin-bottom: 16px;
-        margin-left: 16px;
-        margin-right: 16px;
-        padding-bottom: 8px;
-    }
-
-    /* .graphUser {
-        height: 100%;
-    } */
-
-    h3 {
-        margin-top: 0px;
-        padding-top: 16px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-bottom: 0px;
-    }
-
-    .priceTable {
-        padding-inline-start: 16px;
-    }
-
-    /* .chartPlace {
-        max-width: 250px;
-        min-height: 300px;
-    } */
-
-}
 
 /* an new begining */
 
@@ -249,46 +188,6 @@ h2 {
     height: calc(400px - 68px);
 }
 
-@media (max-width: 860px) {
-    .navigation {
-        display: none;
-    }
-
-}
-
-
-@media (max-width: 800px) {
-    .card {
-        width: 90%;
-        min-height: 45%;
-        height: auto;
-    }
-
-    .chartBox {
-        width: 90%;
-        /* height: 45%; */
-    }
-}
-
-@media (max-width: 480px) {
-    .card {
-        height: auto;
-    }
-}
-
-@media (max-width: 340px) {
-    ul {
-        list-style-type: none;
-    }
-}
-
-@media screen and (max-width: 360px) {
-    .card {
-        height: auto;
-        /* sehr wichtig: hier wird die feste Standardhöhe ausgeschaltet */
-        min-height: 460px;
-    }
-}
 
 .period {
     display: flex;
@@ -333,12 +232,11 @@ h2 {
 }
 
 .menuBar {
-
     display: flex;
     flex-direction: column;
     justify-content: start;
     gap: 40px;
-    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
     z-index: 1;
 }
 
@@ -366,10 +264,142 @@ h2 {
     top: 86px;
     left: 0px;
     height: calc(100vh - 86px - 32px);
+    transition: transform 125ms ease-in-out;
 }
 
 .btn-menu-bar {
     position: absolute;
     top: 0px;
     right: 0px;
+}
+
+.openCloseBar {
+    display: none;
+}
+
+.openCloseBar button {
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(66, 0, 151, 1.0);
+    cursor: pointer;
+    width: 120px;
+    height: 70px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.25px;
+}
+
+@media (max-width: 950px) {
+    .dashboard {
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+
+    .tableBitcoin {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .styleCard {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .graph {
+        margin-top: 8px;
+        margin-bottom: 16px;
+        margin-left: 16px;
+        margin-right: 16px;
+        padding-bottom: 8px;
+    }
+
+    h3 {
+        margin-top: 0px;
+        padding-top: 16px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+    }
+
+    .priceTable {
+        padding-inline-start: 16px;
+    }
+}
+
+
+
+@media (max-width: 860px) {
+    .navigation {
+        display: none;
+    }
+
+    .openCloseBar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 8px;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .card {
+        width: 90%;
+        min-height: 45%;
+        height: auto;
+    }
+
+    .chartBox {
+        width: 90%;
+        /* height: 45%; */
+    }
+}
+
+@media (max-width: 480px) {
+
+    .dateValidationResponse {
+        width: auto;
+    }
+
+    .card {
+        height: auto;
+    }
+}
+
+
+@media (max-width: 360px) {
+    .card {
+        height: auto;
+        /* sehr wichtig: hier wird die feste Standardhöhe ausgeschaltet */
+        min-height: 460px;
+    }
+
+    .header {
+        flex-wrap: wrap;
+        height: auto;
+        justify-content: left;
+    }
+
+    .background-menuBar {
+        top: 180px;
+    }
+
+    .openCloseBar button {
+        margin-bottom: 16px;
+        margin-left: 16px;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 340px) {
+    ul {
+        list-style-type: none;
+    }
 }

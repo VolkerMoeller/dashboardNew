@@ -34,6 +34,7 @@ async function initUser() {
     if (validInput == false) {
         showAnyDivById('card4');
         hideAnyDivById('chartBoxUser');
+        hideAnyDivById('card7');
         clearCanvasUser();
         return;
     } else {
@@ -274,6 +275,15 @@ function hideAnyDivById(anyId) {
 
 function showAnyDivById(anyId) {
     document.getElementById(anyId).classList.remove('displayNone');
+}
+
+function openCloseBar() {  
+    let opened =  document.getElementById('menuBar').style['transform']; 
+    if (opened == 'translateX(-100%)') {
+        document.getElementById('menuBar').style = "transform: translateX(0%)";
+    } else {
+        document.getElementById('menuBar').style = "transform: translateX(-100%)";
+    }
 }
 
 function initCurrentCardById(currentCardId) {

@@ -28,12 +28,15 @@
             <button onclick="initCurrentCardById('card3')" id="btn-card3">Zeitraum</button>
             <button onclick="initCurrentCardById('card5')" id="btn-card5">Your Chart</button>
         </div>
+        <div class="openCloseBar">
+            <button onclick="openCloseBar()" class="openCloseBar" id="openCloseBar">menu</button>
+        </div>
     </div>
-    
+
     <div class="content">
         <div class="card" id="card1">
             <h2>Tagesaktueller Kurs:</h2><span class="paddingLeftRight paddingTopBottom activ default"
-            id="bitCoinToday"></span>
+                id="bitCoinToday"></span>
             <h2>Liste der letzten sechs Tage:</h2>
             <ul class="priceTable" id="priceTable"></ul>
         </div>
@@ -45,7 +48,7 @@
 
             </div>
         </div>
-        
+
         <div class="card displayNone" id="card3">
             <form onsubmit="initUser(); return false;">
                 <h2 class="withoutPaddingLeft">Zeitraumauswahl:</h2>
@@ -68,17 +71,13 @@
             <div class="card" id="card6">
                 <span class="dateValidationResponse">Es liegt keine gültige Zeitraumauswahl vor.<b><br>Zum Ändern auf
                         "Zeitraum" klicken.</b><span></span>
-                    </div>
-                    <div class="chartBox" id="chartBoxUser">
-                        <canvas id="myChartUser"></canvas>
+            </div>
+            <div class="chartBox" id="chartBoxUser">
+                <canvas id="myChartUser"></canvas>
             </div>
         </div>
-        <div class="background-menuBar">
+        <div class="background-menuBar" id="menuBar" style="transform: translateX(-100%)">
             <div class="menuBar" id="menuBar">
-                <div class="openCloseBar">
-                    <button onclick="showMenuBar()" class="btn-menu-bar" id="btn-menu-bar-open">Open</button>
-                    <button onclick="closeMenuBar()" class="btn-menu-bar" id="btn-menu-bar-close">Close</button>
-                </div>
                 <button onclick="initCurrentCardById('card1')" id="btn-menuBar1">Kurs</button>
                 <button onclick="initCurrentCardById('card2')" id="btn-menuBar2">Chart 7</button>
                 <button onclick="initCurrentCardById('card3')" id="btn-menuBar3">Zeitraum</button>
