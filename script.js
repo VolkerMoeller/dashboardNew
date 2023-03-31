@@ -4,6 +4,8 @@ let graphValues = [];
 let graphLabels = [];
 let graphValuesUser = [];
 let graphLabelsUser = [];
+let pricesFormatted = [];
+let datesFormatted = [];
 let validInput = true;
 let cardIds = ['card1', 'card2', 'card3', 'card5'];
 
@@ -55,8 +57,8 @@ function cleanDivById(anyId) {
 function showListItems() {
     let prices = responseAsJSON['dataset']['data'];
     for (let i = 1; i < prices.length; i++) {
-        let priceFormatted = getGraphValueFromJSON(prices[i][1]);
-        let dateFormatted = getGraphLabelFromJSON(prices[i][0]);
+        let priceFormatted = fromAnyJSONToAnyArray(prices[i][1], pricesFormatted, 'num', 'formatted');  
+        let dateFormatted = fromAnyJSONToAnyArray(prices[i][0], datesFormatted, 'date', 'formatted');
         document.getElementById('priceTable').innerHTML += `<li class="default">${dateFormatted}: <b>${priceFormatted}</b></li>`;
     }
 }
@@ -67,8 +69,10 @@ function fromAnyJSONToAnyArray(JSON, array, type, formatted) {
     if (formatted == 'formatted') {
         let formattedValue = getFormattedValueByType(type, value);
         array.push(formattedValue);
+        return formattedValue;
     } else {
         array.push(value);
+        return value;
     }
 }
 
