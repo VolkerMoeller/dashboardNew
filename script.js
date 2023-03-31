@@ -289,6 +289,13 @@ function openCloseBar() {
 }
 
 function initCurrentCardById(currentCardId) {
+    if (currentCardId == 'card1') {
+        init();
+    }
+    showCurrentCardbyId(currentCardId);
+}
+
+function initCurrentCardByIdMenuBar(currentCardId) {
     openCloseBar();
     if (currentCardId == 'card1') {
         init();

@@ -51,11 +51,11 @@
 
         <div class="card displayNone" id="card3">
             <form onsubmit="initUser(); return false;">
-                <h2 class="withoutPaddingLeft">Zeitraumauswahl:</h2>
+                <h2 class="withoutPaddingLeftRight">Zeitraumauswahl:</h2>
                 <div class="period">
-                    <input required type="date" id="userStartDate">
+                    <input class="userStartDate" required type="date" id="userStartDate">
                     bis
-                    <input required type="date" id="userEndDate">
+                    <input class="userEndDate" required type="date" id="userEndDate">
                     <button>Anzeigen</button>
                 </div>
             </form>
@@ -78,10 +78,10 @@
         </div>
         <div class="background-menuBar" id="menuBar" style="transform: translateX(-100%)">
             <div class="menuBar" id="menuBar">
-                <button onclick="initCurrentCardById('card1')" id="btn-menuBar1">Kurs</button>
-                <button onclick="initCurrentCardById('card2')" id="btn-menuBar2">Chart 7</button>
-                <button onclick="initCurrentCardById('card3')" id="btn-menuBar3">Zeitraum</button>
-                <button onclick="initCurrentCardById('card5')" id="btn-menuBar5">Your Chart</button>
+                <button onclick="initCurrentCardByIdMenuBar('card1')" id="btn-menuBar1">Kurs</button>
+                <button onclick="initCurrentCardByIdMenuBar('card2')" id="btn-menuBar2">Chart 7</button>
+                <button onclick="initCurrentCardByIdMenuBar('card3')" id="btn-menuBar3">Zeitraum</button>
+                <button onclick="initCurrentCardByIdMenuBar('card5')" id="btn-menuBar5">Your Chart</button>
             </div>
         </div>
     </div>

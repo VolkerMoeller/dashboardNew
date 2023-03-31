@@ -8,6 +8,15 @@ body {
     align-items: center;
 }
 
+h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 0px;
+}
+
 .header {
     height: 86px;
     width: 100%;
@@ -33,7 +42,7 @@ body {
     font-weight: bold;
     padding-left: 16px;
     padding-right: 16px;
-
+    
 }
 
 .navigation {
@@ -58,42 +67,14 @@ body {
 
 .navigation button:hover {
     background-color: rgba(66, 0, 151, 0.95);
-
-}
-
-h3 {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-top: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 0px;
-}
-
-h2 {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-top: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 0px;
-}
-
-.backgroundWhite {
-    background-color: white;
+    
 }
 
 .styleCard {
     border-radius: 10px;
     margin: 16px;
     background-color: rgb(0, 0, 0, 0.2);
-}
-
-.dashboard {
-    background-color: aqua;
-    display: flex;
-    justify-content: start;
-}
+}s
 
 .tableBitcoin {
     height: 100%;
@@ -101,17 +82,6 @@ h2 {
     color: white;
     display: flex;
     flex-direction: column;
-}
-
-.dashboardRight {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-
-.graph {
-    padding: 16px;
-    margin: 16px;
 }
 
 .paddingLeftRight {
@@ -124,24 +94,8 @@ h2 {
     padding-bottom: 16px;
 }
 
-
-.myChartPlace {
-    padding: 8px;
-}
-
-
-.graphUser form {
-    padding-left: 16px;
-    padding-bottom: 16px;
-}
-
 .displayNone {
     display: none !important;
-}
-
-.paddingNav {
-    padding-left: 16px;
-    padding-top: 16px;
 }
 
 .dateValidationResponse {
@@ -153,14 +107,10 @@ h2 {
     width: 370px;
 }
 
-
-
-.withoutPaddingLeft {
+.withoutPaddingLeftRight {
     padding-left: 0px !important;
+    padding-right: 0px !important;
 }
-
-
-/* an new begining */
 
 .card {
     display: flex;
@@ -188,7 +138,6 @@ h2 {
     height: calc(400px - 68px);
 }
 
-
 .period {
     display: flex;
     justify-content: center;
@@ -200,7 +149,6 @@ h2 {
 
 .card input {
     border: none;
-    border-radius: 10px;
     padding: 6px;
     height: 36px;
     font-family: 'Noto Sans';
@@ -212,8 +160,8 @@ h2 {
 .card button {
     border: none;
     border-radius: 10px;
-    padding: px;
     height: 48px;
+    width: 96px;
     font-family: 'Noto Sans';
     font-size: 18px;
     cursor: pointer;
@@ -221,6 +169,16 @@ h2 {
     margin-right: 16px;
     margin-top: 0px;
     margin-bottom: 0px;
+    background-color: rgba(66, 0, 151, 0.4);
+    color: white;
+}
+
+.userStartDate {
+    border-radius: 10px 0px 0px 10px;
+}
+
+.userEndDate {
+    border-radius: 0px 10px 10px 0px;
 }
 
 .activ {
@@ -267,12 +225,6 @@ h2 {
     transition: transform 125ms ease-in-out;
 }
 
-.btn-menu-bar {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-}
-
 .openCloseBar {
     display: none;
 }
@@ -312,14 +264,6 @@ h2 {
         margin-right: 8px;
     }
 
-    .graph {
-        margin-top: 8px;
-        margin-bottom: 16px;
-        margin-left: 16px;
-        margin-right: 16px;
-        padding-bottom: 8px;
-    }
-
     h3 {
         margin-top: 0px;
         padding-top: 16px;
@@ -333,8 +277,6 @@ h2 {
     }
 }
 
-
-
 @media (max-width: 860px) {
     .navigation {
         display: none;
@@ -346,14 +288,13 @@ h2 {
         align-items: center;
         margin-right: 8px;
     }
-
 }
 
 @media (max-width: 800px) {
     .card {
         width: 90%;
         min-height: 45%;
-        height: auto;
+        /* height: auto; */
     }
 
     .chartBox {
@@ -363,7 +304,6 @@ h2 {
 }
 
 @media (max-width: 480px) {
-
     .dateValidationResponse {
         width: auto;
     }
@@ -373,11 +313,9 @@ h2 {
     }
 }
 
-
 @media (max-width: 360px) {
     .card {
         height: auto;
-        /* sehr wichtig: hier wird die feste Standardhöhe ausgeschaltet */
         min-height: 460px;
     }
 
