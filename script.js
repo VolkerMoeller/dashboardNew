@@ -57,10 +57,19 @@ function cleanDivById(anyId) {
 function showListItems() {
     let prices = responseAsJSON['dataset']['data'];
     for (let i = 1; i < prices.length; i++) {
-        let priceFormatted = fromAnyJSONToAnyArray(prices[i][1], pricesFormatted, 'num', 'formatted');  
-        let dateFormatted = fromAnyJSONToAnyArray(prices[i][0], datesFormatted, 'date', 'formatted');
+        let value = prices[i][1];
+        let label = prices[i][0];
+        getDataForChartSeven(value, label);
+        let priceFormatted = fromAnyJSONToAnyArray(value, pricesFormatted, 'num', 'formatted');
+        let dateFormatted = fromAnyJSONToAnyArray(label, datesFormatted, 'date', 'formatted');
         document.getElementById('priceTable').innerHTML += `<li class="default">${dateFormatted}: <b>${priceFormatted}</b></li>`;
     }
+}
+
+
+function getDataForChartSeven(value,label) {
+    fromAnyJSONToAnyArray(value, graphValues, 'num', '');
+    fromAnyJSONToAnyArray(label, graphLabels, 'date', 'formatted');
 }
 
 
