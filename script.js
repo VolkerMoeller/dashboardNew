@@ -62,35 +62,26 @@ function showListItems() {
 }
 
 
-function getGraphValueFromJSON(JSON) {
+function fromAnyJSONToAnyArray(JSON, array, type, formatted) {
     let value = JSON;
-    let valueFormatted = formatNumber(value);
-    graphValues.push(value);
-    return valueFormatted;
+    if (formatted == 'formatted') {
+        let formattedValue = getFormattedValueByType(type, value);
+        array.push(formattedValue);
+    } else {
+        array.push(value);
+    }
 }
 
 
-function getGraphLabelFromJSON(JSON) {
-    let value = JSON;
-    let valueFormatted = formatDate(value);
-    graphLabels.push(valueFormatted);
-    return valueFormatted;
-}
-
-
-function getGraphValueUserFromJSON(JSON) {
-    let value = JSON;
-    let valueFormatted = formatNumber(value);
-    graphValuesUser.push(value);
-    return valueFormatted;
-}
-
-
-function getGraphLabelUserFromJSON(JSON) {
-    let value = JSON;
-    let valueFormatted = formatDate(value);
-    graphLabelsUser.push(valueFormatted);
-    return valueFormatted;
+function getFormattedValueByType(type, value) {
+    if (type == 'num') {
+        let valueFormatted = formatNumber(value);
+        return valueFormatted;
+    };
+    if (type == 'date') {
+        let valueFormatted = formatDate(value);
+        return valueFormatted;
+    };
 }
 
 
@@ -147,8 +138,8 @@ function showYourChart() {
 function getBitCoinUser() {
     let prices = responseAsJSON['dataset']['data'];
     for (let i = 1; i < prices.length; i++) {
-        getGraphValueUserFromJSON(prices[i][1]);
-        getGraphLabelUserFromJSON(prices[i][0]);
+        fromAnyJSONToAnyArray(prices[i][1], graphValuesUser, 'num', '');
+        fromAnyJSONToAnyArray(prices[i][0], graphLabelsUser, 'date', 'formatted');
     }
 }
 
