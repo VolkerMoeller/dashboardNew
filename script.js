@@ -1,50 +1,18 @@
 let responseAsJSON;
-
 const API_KEY = 'E2iC8Urvu8s2-o76kyCB';
-
 let graphValues = [];
 let graphLabels = [];
 let graphValuesUser = [];
 let graphLabelsUser = [];
-
-
-
 let validInput = true;
-
 let cardIds = ['card1', 'card2', 'card3', 'card5'];
 
 
 async function init() {
     clearCanvas();
-    // clearCanvasUser();
     await loadBitcoin();
     reverseData();
     showGraph();
-}
-
-
-async function initUser() {
-    validInput = true;
-    showAnyDivById('card6');
-    showAnyDivById('card7');
-    showAnyDivById('chartBoxUser');
-    clearCanvasUser();
-    clearDateValidationResponse();
-    proofUserDates();
-    if (validInput == false) {
-        showAnyDivById('card4');
-        hideAnyDivById('chartBoxUser');
-        hideAnyDivById('card7');
-        clearCanvasUser();
-        return;
-    } else {
-        await loadBitcoinUser();
-        showCurrentCardbyId('card5');
-        hideAnyDivById('card6');
-        hideAnyDivById('card7');
-        reverseDataUser();
-        showGraphUser();
-    }
 }
 
 
@@ -54,20 +22,13 @@ async function loadBitcoin() {
     let url = `https://data.nasdaq.com/api/v3/datasets/BCHAIN/MKPRU?start_date=${start_date}&end_date=${end_date}&api_key=${API_KEY}`
     let response = await fetch(url);
     responseAsJSON = await response.json();
-    console.log('Response: ', responseAsJSON);
-    showBitCoinToday();
-    showBitCoinLastSixDays();
+    showStockPrices();
 }
 
 
-async function loadBitcoinUser() {
-    let user_start_date = getUserStartDate();
-    let user_end_date = getUserEndDate();
-    let url = `https://data.nasdaq.com/api/v3/datasets/BCHAIN/MKPRU?start_date=${user_start_date}&end_date=${user_end_date}&api_key=${API_KEY}`
-    let response = await fetch(url);
-    responseAsJSON = await response.json();
-    console.log('Response: ', responseAsJSON);
-    getBitCoinUser();
+function showStockPrices() {
+    showBitCoinToday();
+    showBitCoinLastSixDays();
 }
 
 
@@ -81,30 +42,115 @@ function showBitCoinToday() {
 
 
 function showBitCoinLastSixDays() {
-    document.getElementById('priceTable').innerHTML = ``;
+    cleanDivById('priceTable');
+    showListItems();
+}
+
+
+function cleanDivById(anyId) {
+    document.getElementById(anyId).innerHTML = ``;
+}
+
+
+function showListItems() {
     let prices = responseAsJSON['dataset']['data'];
     for (let i = 1; i < prices.length; i++) {
-        let price = prices[i][1];
-        let priceFormatted = formatNumber(price);
-        graphValues.push(price);
-        let date = prices[i][0];
-        let dateFormatted = formatDate(date);
-        graphLabels.push(dateFormatted);
+        let priceFormatted = getGraphValueFromJSON(prices[i][1]);
+        let dateFormatted = getGraphLabelFromJSON(prices[i][0]);
         document.getElementById('priceTable').innerHTML += `<li class="default">${dateFormatted}: <b>${priceFormatted}</b></li>`;
     }
-};
+}
+
+
+function getGraphValueFromJSON(JSON) {
+    let value = JSON;
+    let valueFormatted = formatNumber(value);
+    graphValues.push(value);
+    return valueFormatted;
+}
+
+
+function getGraphLabelFromJSON(JSON) {
+    let value = JSON;
+    let valueFormatted = formatDate(value);
+    graphLabels.push(valueFormatted);
+    return valueFormatted;
+}
+
+
+function getGraphValueUserFromJSON(JSON) {
+    let value = JSON;
+    let valueFormatted = formatNumber(value);
+    graphValuesUser.push(value);
+    return valueFormatted;
+}
+
+
+function getGraphLabelUserFromJSON(JSON) {
+    let value = JSON;
+    let valueFormatted = formatDate(value);
+    graphLabelsUser.push(valueFormatted);
+    return valueFormatted;
+}
+
+
+async function loadBitcoinUser() {
+    let user_start_date = getUserStartDate();
+    let user_end_date = getUserEndDate();
+    let url = `https://data.nasdaq.com/api/v3/datasets/BCHAIN/MKPRU?start_date=${user_start_date}&end_date=${user_end_date}&api_key=${API_KEY}`
+    let response = await fetch(url);
+    responseAsJSON = await response.json();
+    getBitCoinUser();
+}
+
+
+async function initUser() {
+    validInput = true;
+    prepareYourChart();
+    proofUserDates();
+    if (validInput == false) {
+        tidyYourChart();
+        return;
+    } else {
+        await loadBitcoinUser();
+        showYourChart();
+    }
+}
+
+
+function prepareYourChart() {
+    showAnyDivById('card6');
+    showAnyDivById('card7');
+    showAnyDivById('chartBoxUser');
+    clearCanvasUser();
+    clearDateValidationResponse();
+}
+
+
+function tidyYourChart() {
+    showAnyDivById('card4');
+    hideAnyDivById('chartBoxUser');
+    hideAnyDivById('card7');
+    clearCanvasUser();
+}
+
+
+function showYourChart() {
+    showCurrentCardbyId('card5');
+    hideAnyDivById('card6');
+    hideAnyDivById('card7');
+    reverseDataUser();
+    showGraphUser();
+}
 
 
 function getBitCoinUser() {
     let prices = responseAsJSON['dataset']['data'];
     for (let i = 1; i < prices.length; i++) {
-        let price = prices[i][1];
-        graphValuesUser.push(price);
-        let date = prices[i][0];
-        let dateFormatted = formatDate(date);
-        graphLabelsUser.push(dateFormatted);
+        getGraphValueUserFromJSON(prices[i][1]);
+        getGraphLabelUserFromJSON(prices[i][0]);
     }
-};
+}
 
 
 function getStartDate() {
@@ -126,7 +172,6 @@ function getAnyDateBefore(daysBefore) {
     anyDate = today.toISOString().split('T')[0];
     return anyDate;
 }
-
 
 
 function reverseData() {
@@ -195,7 +240,7 @@ function validationFutureDate(date) {
     if (convertDatetoJavaIso(date) > today) {
         let dateFormatted = formatDate(date);
         document.getElementById('card4').innerHTML += `<span class="dateValidationResponse"><b>Bitte Eingabe prüfen:</b><br> ${dateFormatted}: Dieses Datum liegt in der Zukunft!<br><span>`;
-        document.getElementById('card6').innerHTML += `<span class="dateValidationResponse">${dateFormatted}: Dieses Datum liegt in der Zukunft!<br><b>Zum Ändern auf "Zeitraum" klicken.</b><br><span>`;
+        document.getElementById('card6').innerHTML += `<span class="dateValidationResponse">${dateFormatted}: Dieses Datum liegt in der Zukunft!<br><b>Zum Ändern im Menü auf "Zeitraum" klicken.</b><br><span>`;
         validInput = false;
     };
 }
@@ -204,7 +249,7 @@ function validationFutureDate(date) {
 function validationOrderDate() {
     if (convertDatetoJavaIso(getUserStartDate()) > convertDatetoJavaIso(getUserEndDate())) {
         document.getElementById('card4').innerHTML += '<span class="dateValidationResponse"><b>Bitte Eingabe prüfen:</b><br> Das Startdatum liegt nach dem Enddatum.<span>';
-        document.getElementById('card6').innerHTML += '<span class="dateValidationResponse">Das Startdatum liegt nach dem Enddatum.<b><br>Zum Ändern auf "Zeitraum" klicken.</b><span>';
+        document.getElementById('card6').innerHTML += '<span class="dateValidationResponse">Das Startdatum liegt nach dem Enddatum.<b><br>Zum Ändern im Menü auf "Zeitraum" klicken.</b><span>';
         validInput = false;
     }
 }
@@ -246,6 +291,7 @@ function formatDate(anyDate) {
     return newDate;
 }
 
+
 function showOrHideAnyDivById(anyId) {
     let displayNone = document.getElementById(anyId).classList.contains('displayNone');
     if (displayNone == true) {
@@ -277,16 +323,28 @@ function showAnyDivById(anyId) {
     document.getElementById(anyId).classList.remove('displayNone');
 }
 
-function openCloseBar() {  
-    let opened =  document.getElementById('menuBar').style['transform']; 
+
+function addAnyClassById(anyId, classString) {
+    document.getElementById(anyId).classList.add(classString);
+}
+
+
+function removeAnyClassById(anyId, classString) {
+    document.getElementById(anyId).classList.remove(classString);
+}
+
+
+function openCloseBar() {
+    let opened = document.getElementById('menuBar').style['transform'];
     if (opened == 'translateX(-100%)') {
         document.getElementById('menuBar').style = "transform: translateX(0%)";
-        document.getElementById('openClose-btn').classList.add('activ');      
+        addAnyClassById('openClose-btn', 'activ');
     } else {
         document.getElementById('menuBar').style = "transform: translateX(-100%)";
-        document.getElementById('openClose-btn').classList.remove('activ');
+        removeAnyClassById('openClose-btn', 'activ');
     }
 }
+
 
 function initCurrentCardById(currentCardId) {
     if (currentCardId == 'card1') {
@@ -294,6 +352,7 @@ function initCurrentCardById(currentCardId) {
     }
     showCurrentCardbyId(currentCardId);
 }
+
 
 function initCurrentCardByIdMenuBar(currentCardId) {
     openCloseBar();
@@ -304,32 +363,59 @@ function initCurrentCardByIdMenuBar(currentCardId) {
 }
 
 
-// Clean Code Achtung
 function showCurrentCardbyId(currentCardId) {
-    let btnId = 'btn-' + currentCardId;
+    let btnId = builtVariableByTwoValues('btn-', currentCardId);
     let lastChar = currentCardId.charAt(4);
-    let btnMenuId = 'btn-menuBar' + lastChar;
+    let btnMenuId = builtVariableByTwoValues('btn-menuBar', lastChar);
     for (let i = 0; i < cardIds.length; i++) {
         let cardId = cardIds[i];
-        let btnId = 'btn-' + cardId;
-        let lastChar = cardId.charAt(4);
-        let btnMenuId = 'btn-menuBar' + lastChar;
-        changeColorToDefaultById(btnId);
-        changeColorToDefaultById(btnMenuId);
-        document.getElementById(cardId).classList.add('displayNone');
+        setAllCardsToDefault(cardId);
     }
+    setCurrentCardToActiv(currentCardId, btnId, btnMenuId);
+}
+
+
+function setCurrentCardToActiv(currentCardId, btnId, btnMenuId) {
+    removeAnyClassById(currentCardId, 'displayNone')
+    setCurrentButtontextOnActivColor(btnId, btnMenuId);
+}
+
+
+function setAllCardsToDefault(cardId) {
+    addAnyClassById(cardId, 'displayNone')
+    setButtontextOnDefaultColor(cardId);
+}
+
+
+function setButtontextOnDefaultColor(cardId) {
+    let btnId = builtVariableByTwoValues('btn-', cardId);
+    let lastChar = cardId.charAt(4);
+    let btnMenuId = builtVariableByTwoValues('btn-menuBar', lastChar);
+    changeColorToDefaultById(btnId);
+    changeColorToDefaultById(btnMenuId);
+}
+
+
+function setCurrentButtontextOnActivColor(btnId, btnMenuId) {
     changeColorToActivById(btnId);
     changeColorToActivById(btnMenuId);
-    document.getElementById(currentCardId).classList.remove('displayNone');
+}
+
+
+function builtVariableByTwoValues(valueFst, valueSnd) {
+    let varName = valueFst + valueSnd;
+    return varName;
 }
 
 function changeColorToActivById(anyId) {
-    document.getElementById(anyId).classList.add('activ');
+    addAnyClassById(anyId, 'activ');
 }
 
+
 function changeColorToDefaultById(anyId) {
-    document.getElementById(anyId).classList.remove('activ');
+    removeAnyClassById(anyId, 'activ');
 }
+
 
 function destroyChartByConst(constChart) {
     constChart.destroy();

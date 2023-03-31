@@ -294,12 +294,10 @@ h2 {
     .card {
         width: 90%;
         min-height: 45%;
-        /* height: auto; */
     }
 
     .chartBox {
         width: 90%;
-        /* height: 45%; */
     }
 }
 
