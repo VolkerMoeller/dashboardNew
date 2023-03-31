@@ -12,11 +12,23 @@ let cardIds = ['card1', 'card2', 'card3', 'card5'];
 
 async function init() {
     clearCanvas();
+    hideAnyDivById('chartBoxUser');
+    showDelayServer();
     await loadBitcoin();
+    closeDelayServer();
     reverseData();
-    showGraph();
+    initGraph();
 }
 
+
+function showDelayServer() {
+    showAnyDivById('card8');
+}
+
+
+function closeDelayServer() {
+    hideAnyDivById('card8');
+}
 
 async function loadBitcoin() {
     let start_date = getStartDate();
@@ -139,12 +151,14 @@ function tidyYourChart() {
 }
 
 
+
+
 function showYourChart() {
     showCurrentCardbyId('card5');
     hideAnyDivById('card6');
     hideAnyDivById('card7');
     reverseDataUser();
-    showGraphUser();
+    initGraphUser();
 }
 
 

@@ -1,6 +1,6 @@
 let userChart;
 
-function showGraphUser() {
+function initGraphUser() {
 
     const ctx = document.getElementById('myChartUser');
 

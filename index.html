@@ -40,6 +40,9 @@
                 id="bitCoinToday"></span>
             <h2>Liste der letzten sechs Tage:</h2>
             <ul class="priceTable" id="priceTable"></ul>
+            <div class="card displayNone" id="card8">
+                <span class="dateValidationResponse">Server lässt sich Zeit.<b><br>Bitte warten</b><span></span>
+            </div>
         </div>
 
         <div class="card displayNone" id="card2">
@@ -69,12 +72,12 @@
 
         <div class="card displayNone" id="card5">
             <h2>Chart nach Zeitraumauswahl:</h2>
-            <div class="card" id="card6">
-                <span class="dateValidationResponse">Es liegt keine gültige Zeitraumauswahl vor.<b><br>Zum Ändern im Menü auf
-                        "Zeitraum" klicken.</b><span></span>
-            </div>
-            <div class="chartBox" id="chartBoxUser">
+            <div class="chartBox" id="chartBoxUser">    
                 <canvas id="myChartUser"></canvas>
+            </div>
+            <div class="card" id="card6">
+                <span class="dateValidationResponse">Es liegt keine Zeitraumauswahl vor.<b><br>Zum Ändern im Menü auf
+                        "Zeitraum" klicken.</b><span></span>
             </div>
         </div>
         <div class="background-menuBar" id="menuBar" style="transform: translateX(-100%)">

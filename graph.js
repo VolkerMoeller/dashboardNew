@@ -1,6 +1,6 @@
 let sevenDayChart;
 
-function showGraph() {
+function initGraph() {
     const ctx = document.getElementById('myChart');
 
     const type = 'line';
